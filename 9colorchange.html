@@ -1,0 +1,137 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0%;
+        }
+        body{
+            background-color: rgb(141, 86, 44);
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 53vw;
+        margin: 200px 340px;
+            height: 70vh;
+            background-color: rgb(191, 124, 73);
+            border-radius: 20px;
+       
+        border:double 10px;
+        }
+        .inbox{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            
+            
+        }
+        label{
+            margin: 10 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: x-large;
+            color: rgb(72, 51, 12);
+        }
+        select{
+            flex: 1;
+           padding: 5px 20px;
+           background-color: rgb(230, 188, 140);
+        }
+        #result{
+margin: 20px;
+font-size: large;
+font-family: Arial, Helvetica, sans-serif;
+text-align: justify;
+color: rgb(67, 30, 0);
+animation: typin 2s;
+        }
+        @keyframes typin{
+        from{
+            color:  rgb(0, 0, 0);
+        }
+           to{
+          color: rgb(191, 124, 73);
+           }
+        }
+         #color{
+           color: rgb(42, 41, 41);
+           display: flex;
+position: absolute;
+right: 20px;
+top: 0px;
+font-size: larger;
+font-family: Arial, Helvetica, sans-serif;
+
+        }
+        #imgg{
+            width: 90px;
+            height: 90px;
+           
+        }
+
+    </style>
+
+        <p id="color">#</p>
+   
+   <div class="container" id="inbox">
+    <div class="inbox" >
+<label align="left" for="Department">About Department's</label>
+<select name="Department" id="selector">
+    <option value="-1">Select The Department</option>
+    <option value="CSC" >CSC</option>
+    <option value="MECH" >MECH</option>
+    <option value="EEE" >EEE</option>
+    <option value="MBA" >MBA</option>
+</select>
+<p id="result"></p>
+
+</div>
+   </div>
+<script>
+    let hex=[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F']
+    let selector=document.getElementById("selector") 
+    selector.addEventListener('change',bgcolor)
+    let result=document.getElementById("result")
+   
+    function bgcolor(){
+    let content=selector.value;//get value from selector
+let hash='#'
+for(let i=1;i<=6;i++){
+    let random=Math.floor(Math.random()*16)
+        let final= hex[random]
+  hash=hash+final
+}
+document.body.style.backgroundColor=hash
+document.getElementById("color").innerHTML="Color"+hash //random color
+// document.getElementById("inbox").style.backgroundColor=hash //random color
+//if else to show the related content
+if(content=="CSC"){
+    result.innerHTML="Michigan Technological University - What Is Computer Science?Software and software system creation and testing are the main areas of study in computer science. Working with mathematical models, data security and analysis, algorithms, and computational theory are all aspects of it. The computational concepts that form the cornerstone of all software are defined by computer scientists."
+
+}
+if(content=="MECH"){
+result.innerHTML="What is Mechanical Engineering? One of the most diverse and versatile engineering fields, mechanical engineering is the study of objects and systems in motion. As such, the field of mechanical engineering touches virtually every aspect of modern life, including the human body, a highly complex machine."
+}
+if(content=="EEE"){
+    result.innerHTML="Electrical & Electronics Engineering (EEE):Courses,Jobs ...An electrical & electronics engineer can work with the industries deals in product development,control system, system management,product design,sales, consumer's electronics, transportation, wireless communication, manufacturing, chemical, automotive, defense and space research organizations."
+}
+if(content=="MBA"){
+    result.innerHTML="The MBA course is an academic programme oriented towards management and marketing. It includes subjects such as Organisational Behaviour, Marketing,Principles of Management,Supply Chain Management,Operations Management, etc."
+}
+else if(content=="-1"){
+result.innerHTML=""
+}
+
+}
+
+   
+
+</script>
+</body>
+</html>
